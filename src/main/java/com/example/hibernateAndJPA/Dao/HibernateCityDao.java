@@ -46,7 +46,8 @@ public class HibernateCityDao implements ICityDao {
     @Override
     public void delete(City city) {
         Session session = entityManager.unwrap(Session.class);
-        session.remove(city);
+        City cityToDelete=session.get(City.class,city.getId());
+        session.remove(cityToDelete);
 
 
     } // hibernate için sessionfactory ve session ile yapıyorduk. artık jpa
